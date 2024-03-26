@@ -14,8 +14,6 @@ function App() {
 
                 const data = await response.json();
 
-                console.log(data);
-
                 setGame(data);
                 setBoard(data.solution.split('').map((c) => '_'));
             } catch (error) {
@@ -31,11 +29,9 @@ function App() {
         const lettersIndex = letters.indexOf(guess);
         console.log(guess);
         if (lettersIndex >= 0) {
-            console.log('success');
             setBoard(board.map((c, i) => i === lettersIndex ? guess : c));
         } else {
             setGuessesRemaining(guessesRemaining - 1);
-            console.log('failure');
         }
     }
     return (
