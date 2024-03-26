@@ -26,11 +26,20 @@ function App() {
     const onChange = (e) => {
         const guess = e.target.value.toLowerCase().split('').slice(-1)[0];
         const letters = solution.toLowerCase().split('');
-        const lettersIndex = letters.indexOf(guess);
-        console.log(guess);
-        if (lettersIndex >= 0) {
-            setBoard(board.map((c, i) => i === lettersIndex ? guess : c));
+        const lettersIndexes = [];
+
+        var i = -1;
+        while ((i = letters.indexOf(guess, i+1)) !== -1) {
+            lettersIndexes.push(i);
+        }
+
+        console.log(lettersIndexes);
+
+        if (lettersIndexes.length > 0) {
+            console.log('success');
+            setBoard(board.map((c, i) => lettersIndexes.includes(i) ? guess : c));
         } else {
+            console.log('failure');
             setGuessesRemaining(guessesRemaining - 1);
         }
     }
