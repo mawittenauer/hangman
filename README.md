@@ -18,7 +18,7 @@ Environment Variables:
 touch client/.env
 ```
 
-Entering the following variables in client/.env:
+Enter the following variables in client/.env:
 ```
 REACT_APP_API_URL=http://localhost:3002
 ```
